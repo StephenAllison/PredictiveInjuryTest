@@ -4,41 +4,41 @@ const Schema = mongoose.Schema;
 //Athlete Model
 const athleteMediatorSchema = new Schema({
   //Sport Anxiety Scale (SAS)
-  worry: String,
-  concentrationDisruption: String,
-  somaticTraitAnxiety: String,
+  worry: Number,
+  concentrationDisruption: Number,
+  somaticTraitAnxiety: Number,
   //Sport Competitive Anxiety Test (SCAT)
-  competitiveAnxiety: String,
+  competitiveAnxiety: Number,
   //Competitive State Anxiety Inventory
-  cognitiveStateAnxiety: String,
-  somaticStateAnxiety: String,
-  stateSelfConfidence: String,
+  cognitiveStateAnxiety: Number,
+  somaticStateAnxiety: Number,
+  stateSelfConfidence: Number,
   //Atheletic Burnout Questionaire (ABQ)
-  reducedSenceofAccomplishment: String,
-  emotionalAndPhysicalExhaustion: String,
-  devaluation: String,
+  reducedSenceofAccomplishment: Number,
+  emotionalAndPhysicalExhaustion: Number,
+  devaluation: Number,
   // LEI/LESCA
   // Life Event Inventory/ Life Event Survey Collegiate Athletes
-  lifeEventStress: String,
+  lifeEventStress: Number,
   //POMS-Total Mood Disturbance
-  angerHostility: String,
-  confusionBewilderment: String,
-  depressionDejection: String,
-  fatigueInertia: String,
-  tentionAnxiety: String,
+  angerHostility: Number,
+  confusionBewilderment: Number,
+  depressionDejection: Number,
+  fatigueInertia: Number,
+  tentionAnxiety: Number,
   //Swedish University Scales Of Personality (SSP)-mediators
-  somaticTraitAnxiety: String,
-  psychicTraitAnxiety: String,
-  stressSuceptability: String,
-  lackOfAssertiveness: String,
-  impulsiveness: String,
-  adventureSeeking: String,
-  detachment: String,
-  embitterment: String,
-  traitIrritability: String,
-  mistrust: String,
-  verbalTraitAgression: String,
-  physicalTraitAgression: String
+  somaticTraitAnxiety: Number,
+  psychicTraitAnxiety: Number,
+  stressSuceptability: Number,
+  lackOfAssertiveness: Number,
+  impulsiveness: Number,
+  adventureSeeking: Number,
+  detachment: Number,
+  embitterment: Number,
+  traitIrritability: Number,
+  mistrust: Number,
+  verbalTraitAgression: Number,
+  physicalTraitAgression: Number
 });
 
 const athleteMediator = mongoose.model(
