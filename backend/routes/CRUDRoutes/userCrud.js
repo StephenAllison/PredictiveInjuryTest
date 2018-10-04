@@ -38,22 +38,26 @@ router.get("/userProfile/:id", (req, res, next) => {
     });
 });
 
-// // PUT route => to update a specific project
-// router.put('/projects/:id', (req, res, next)=>{
+// PUT route => to update a specific project
+router.put("/userProfile/:id", (req, res, next) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ message: "Specified id is not valid" });
+    return;
+  }
 
-//     if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
-//       res.status(400).json({ message: 'Specified id is not valid' });
-//       return;
-//     }
-
-//     Project.findByIdAndUpdate(req.params.id, req.body)
-//       .then(() => {
-//         res.json({message: `Project with ${req.params.id} is updated successfully.`});
-//       })
-//       .catch(err => {
-//         res.json(err);
-//       })
-//   })
+  userProfile
+    .findByIdAndUpdate(req.params.id, req.body)
+    .then(() => {
+      res.json({
+        message: `Profile ${
+          req.params.id
+        } has been successfully updated successfully.`
+      });
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
 
 //   // DELETE route => to delete a specific project
 //   router.delete('/projects/:id', (req, res, next)=>{
