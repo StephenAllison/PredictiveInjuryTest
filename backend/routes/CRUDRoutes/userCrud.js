@@ -2,19 +2,36 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
-const Project = require("../models/project-model");
-const user = require("../../models/Athlete-Models/athleteProfile");
+const user = require("../../models/user");
 
-// // GET route => to get all the projects
-// router.get('/projects', (req, res, next) => {
-//   Project.find().populate('tasks')
-//     .then(allTheProjects => {
-//       res.json(allTheProjects);
-//     })
-//     .catch(err => {
-//       res.json(err);
-//     })
-// });
+// GET route => to Get Full Athlete Profile
+router.get("/userProfile", (req, res, next) => {
+  athleteProfile
+    .find()
+    .then(userProfile => {
+      res.json(userProfile);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
+router.post("/newAthlete", (req, res, next) => {
+  newAthlete
+    .create({
+      sport: req.body.sport,
+      league: req.body.league,
+      team: req.body.team,
+      name: req.body.name,
+      position: req.body.position
+    })
+    .then(response => {
+      res.json(response);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
 
 // // POST route => to create a new project
 // router.post('/projects', (req, res, next)=>{
@@ -89,4 +106,4 @@ const user = require("../../models/Athlete-Models/athleteProfile");
 //       })
 //   })
 
-// module.exports = router;
+module.exports = router;
