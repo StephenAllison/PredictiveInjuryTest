@@ -6,10 +6,11 @@ const athleteProfileSchema = new Schema({
   league: String,
   team: String,
   name: String,
-  position: String,
-  moderators: { type: Schema.Types.ObjectId, ref: "athleteModerators" },
-  mediators: { type: Schema.Types.ObjectId, ref: "athleteMediators" }
+  position: String
+  // moderators: { type: Schema.Types.ObjectId, ref: "AthleteModerator" }
+  // mediators: { type: Schema.Types.ObjectId, ref: "AthleteMediator" }
 });
-const athleteProfile = mongoose.model("athleteProfile", athleteProfileSchema);
 
-module.exports = athleteProfile;
+const AthleteProfile = mongoose.model("AthleteProfile", athleteProfileSchema);
+
+module.exports = AthleteProfile;

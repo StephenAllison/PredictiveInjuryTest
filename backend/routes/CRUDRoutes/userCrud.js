@@ -2,7 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
-const user = require("../../models/user");
+const userProfile = require("../../models/user");
 
 // GET route => to Get Full Athlete Profile
 router.get("/userProfile", (req, res, next) => {
@@ -16,17 +16,20 @@ router.get("/userProfile", (req, res, next) => {
     });
 });
 
-router.post("/userProfile", (req, res, next) => {
-  newAthlete
-    .create({
-      sport: req.body.sport,
-      league: req.body.league,
-      team: req.body.team,
-      role: req.body.role,
-      name: req.body.name,
-      username: req.body.username,
-      password: req.body.password
-    })
+// GET route => to get a specific project/detailed view
+router.get("/userProfile/:id", (req, res, next) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ message: "Specified id is not valid" });
+    return;
+  }
+
+  // our projects have array of tasks' ids and
+  // we can use .populate() method to get the whole task objects
+  //                                   ^
+  //                                   |
+  //                                   |
+  userProfile
+    .findById(req.params.id)
     .then(response => {
       res.json(response);
     })
@@ -34,28 +37,6 @@ router.post("/userProfile", (req, res, next) => {
       res.json(err);
     });
 });
-
-//   // GET route => to get a specific project/detailed view
-// router.get('/projects/:id', (req, res, next)=>{
-
-//     if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
-//       res.status(400).json({ message: 'Specified id is not valid' });
-//       return;
-//     }
-
-//     // our projects have array of tasks' ids and
-//     // we can use .populate() method to get the whole task objects
-//     //                                   ^
-//     //                                   |
-//     //                                   |
-//     Project.findById(req.params.id).populate('tasks')
-//       .then(response => {
-//         res.json(response);
-//       })
-//       .catch(err => {
-//         res.json(err);
-//       })
-//   })
 
 // // PUT route => to update a specific project
 // router.put('/projects/:id', (req, res, next)=>{

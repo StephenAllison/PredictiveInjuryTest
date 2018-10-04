@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 //Athlete Model
 const athleteModeratorSchema = new Schema({
   //Social Support Survey
-  //Can be used to measure indipendently for coaches teammates and fam/friends
+  //Can be used to measure independently for coaches teammates and fam/friends
   emotionalInformationalSupport: Number,
   tangibleSupport: Number,
   affectionateSupport: Number,
@@ -21,14 +21,14 @@ const athleteModeratorSchema = new Schema({
   vigor: Number,
   friendliness: Number,
   //Swedish Universities Scales Of Personality (SSP)
-  socialDesireability: Number,
+  socialDesirability: Number,
   //Hardiness Scale (H.S)
   levelOfHardiness: Number
 });
 
-const athleteModerator = mongoose.model(
-  "athleteModerator",
+const AthleteModerator = mongoose.model(
+  "AthleteModerator",
   athleteModeratorSchema
 );
 
-module.exports = athleteModerator;
+module.exports = AthleteModerator;

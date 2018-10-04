@@ -130,4 +130,9 @@ const athleteProfileCrud = require("./routes/CRUDRoutes/athleteProfileCrud.js");
 app.use("/api", athleteProfileCrud);
 
 const userCrud = require("./routes/CRUDRoutes/userCrud");
+app.use("/api", userCrud);
+
+// const athleteProfileCrud = ".routes/CRUDRoutes/newAthlete/:id";
+// app.use("/api", athleteProfileCrud);
+
 module.exports = app;

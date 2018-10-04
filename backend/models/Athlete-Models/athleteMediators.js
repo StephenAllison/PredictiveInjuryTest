@@ -13,8 +13,8 @@ const athleteMediatorSchema = new Schema({
   cognitiveStateAnxiety: Number,
   somaticStateAnxiety: Number,
   stateSelfConfidence: Number,
-  //Atheletic Burnout Questionaire (ABQ)
-  reducedSenceofAccomplishment: Number,
+  //Athletic Burnout Questionnaire (ABQ)
+  reducedSenseOfAccomplishment: Number,
   emotionalAndPhysicalExhaustion: Number,
   devaluation: Number,
   // LEI/LESCA
@@ -25,11 +25,11 @@ const athleteMediatorSchema = new Schema({
   confusionBewilderment: Number,
   depressionDejection: Number,
   fatigueInertia: Number,
-  tentionAnxiety: Number,
+  tensionAnxiety: Number,
   //Swedish University Scales Of Personality (SSP)-mediators
   somaticTraitAnxiety: Number,
   psychicTraitAnxiety: Number,
-  stressSuceptability: Number,
+  stressSusceptibility: Number,
   lackOfAssertiveness: Number,
   impulsiveness: Number,
   adventureSeeking: Number,
@@ -37,13 +37,13 @@ const athleteMediatorSchema = new Schema({
   embitterment: Number,
   traitIrritability: Number,
   mistrust: Number,
-  verbalTraitAgression: Number,
-  physicalTraitAgression: Number
+  verbalTraitAggression: Number,
+  physicalTraitAggression: Number
 });
 
-const athleteMediator = mongoose.model(
-  "athleteMediator",
+const AthleteMediator = mongoose.model(
+  "AthleteMediator",
   athleteMediatorSchema
 );
 
-module.exports = athleteMediator;
+module.exports = AthleteMediator;

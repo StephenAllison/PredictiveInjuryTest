@@ -9,6 +9,11 @@ const bcrypt = require("bcryptjs");
 // require the user model !!!!
 const user = require("../models/user");
 authRoutes.post("/signup", (req, res, next) => {
+  const sport = req.body.sport;
+  const league = req.body.league;
+  const team = req.body.team;
+  const role = req.body.role;
+  const name = req.body.name;
   const username = req.body.username;
   const password = req.body.password;
 
@@ -40,6 +45,11 @@ authRoutes.post("/signup", (req, res, next) => {
     const hashPass = bcrypt.hashSync(password, salt);
 
     const aNewUser = new user({
+      sport: sport,
+      league: league,
+      team: team,
+      role: role,
+      name: name,
       username: username,
       password: hashPass
     });

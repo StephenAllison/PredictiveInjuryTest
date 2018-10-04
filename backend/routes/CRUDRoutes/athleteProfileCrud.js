@@ -8,8 +8,8 @@ const athleteProfile = require("../../models/Athlete-Models/athleteProfile");
 router.get("/athleteProfile", (req, res, next) => {
   athleteProfile
     .find()
-    .populate("moderators")
-    .populate("mediators")
+    // .populate("moderators")
+    // .populate("mediators")
     .then(athleteFullProfile => {
       res.json(athleteFullProfile);
     })
@@ -20,7 +20,7 @@ router.get("/athleteProfile", (req, res, next) => {
 
 // POST route => to create a new Athlete Profile
 router.post("/newAthlete", (req, res, next) => {
-  newAthlete
+  athleteProfile
     .create({
       sport: req.body.sport,
       league: req.body.league,
@@ -36,27 +36,49 @@ router.post("/newAthlete", (req, res, next) => {
     });
 });
 
-//   // GET route => to get a specific project/detailed view
-// router.get('/projects/:id', (req, res, next)=>{
+// router.get("/athlete/:id", (req, res, next) => {
+//   // if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+//   //     res.status(400).json({ message: "Specified id is not valid" });
+//   //     return;
+//   //   }
 
-//     if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
-//       res.status(400).json({ message: 'Specified id is not valid' });
-//       return;
-//     }
+//   athleteProfile
+//     .findById(req.params.id)
+//     .then(response => {
+//       console.log(response);
+//     })
+//     .catch(err => {
+//       res.json(err);
+//     });
+// });
 
-//     // our projects have array of tasks' ids and
-//     // we can use .populate() method to get the whole task objects
-//     //                                   ^
-//     //                                   |
-//     //                                   |
-//     Project.findById(req.params.id).populate('tasks')
-//       .then(response => {
-//         res.json(response);
-//       })
-//       .catch(err => {
-//         res.json(err);
-//       })
-//   })
+// GET route => to get a specific project/detailed view
+router.get("/athlete/:id", (req, res, next) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ message: "Specified id is not valid" });
+    return;
+  }
+
+  // our projects have array of tasks' ids and
+  // we can use .populate() method to get the whole task objects
+  //                                   ^
+  //                                   |
+  //                                   |
+  athleteProfile
+    .findById(req.params.id)
+    // .populate("moderators")
+    // .populate("mediators")
+    .then(response => {
+      //   console.log(req.params.id);
+      res.json(response);
+      console.log(response);
+      //   res.json(response);
+    })
+    .catch(err => {
+      res.json(err);
+      console.log(err);
+    });
+});
 
 // // PUT route => to update a specific project
 // router.put('/projects/:id', (req, res, next)=>{
