@@ -1,8 +1,8 @@
-// // routes/project-routes.js
-// const express = require('express');
-// const router  = express.Router();
-// const mongoose = require('mongoose');
-// const Project = require('../models/project-model');
+// routes/project-routes.js
+const express = require("express");
+const router = express.Router();
+const mongoose = require("mongoose");
+const athleteMediators = require("../../models/Athlete-Models/athleteMediators");
 
 // // GET route => to get all the projects
 // router.get('/projects', (req, res, next) => {

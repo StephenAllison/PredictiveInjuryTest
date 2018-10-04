@@ -18,22 +18,23 @@ router.get("/athleteProfile", (req, res, next) => {
     });
 });
 
-// // POST route => to create a new project
-// router.post('/projects', (req, res, next)=>{
-
-//     Project.create({
-//       title: req.body.title,
-//       description: req.body.description,
-//       owner: req.user._id,
-//       tasks: []
-//     })
-//       .then(response => {
-//         res.json(response);
-//       })
-//       .catch(err => {
-//         res.json(err);
-//       })
-//   });
+// POST route => to create a new Athlete Profile
+router.post("/newAthlete", (req, res, next) => {
+  newAthlete
+    .create({
+      sport: req.body.sport,
+      league: req.body.league,
+      team: req.body.team,
+      name: req.body.name,
+      position: req.body.position
+    })
+    .then(response => {
+      res.json(response);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
 
 //   // GET route => to get a specific project/detailed view
 // router.get('/projects/:id', (req, res, next)=>{

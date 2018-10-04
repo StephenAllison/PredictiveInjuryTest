@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const Project = require("../models/project-model");
-const userCrud = require("../../models/Athlete-Models/athleteProfile");
+const user = require("../../models/Athlete-Models/athleteProfile");
 
 // // GET route => to get all the projects
 // router.get('/projects', (req, res, next) => {
