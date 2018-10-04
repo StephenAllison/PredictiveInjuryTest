@@ -116,7 +116,7 @@ passport.use(
 app.use(
   cors({
     credentials: true,
-    origin: ["http://localhost:5000"]
+    origin: ["http://localhost:3000"]
   })
 );
 
@@ -125,5 +125,8 @@ app.use("/", index);
 
 const authRoutes = require("./routes/auth-routes");
 app.use("/api", authRoutes);
+
+const athleteProfileCrud = require("./routes/CRUDRoutes/athleteProfileCrud.js");
+app.use("/api", athleteProfileCrud);
 
 module.exports = app;
