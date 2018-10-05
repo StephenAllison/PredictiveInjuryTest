@@ -36,21 +36,23 @@ router.post("/newAthlete", (req, res, next) => {
     });
 });
 
-// router.get("/athlete/:id", (req, res, next) => {
-//   // if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-//   //     res.status(400).json({ message: "Specified id is not valid" });
-//   //     return;
-//   //   }
+router.get("/athlete/:id", (req, res, next) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ message: "Specified id is not valid" });
+    return;
+  }
 
-//   athleteProfile
-//     .findById(req.params.id)
-//     .then(response => {
-//       console.log(response);
-//     })
-//     .catch(err => {
-//       res.json(err);
-//     });
-// });
+  athleteProfile
+    .findById(req.params.id)
+    .then(response => {
+      res.json(response);
+      console.log(response);
+    })
+    .catch(err => {
+      res.json(err);
+      console.log(err);
+    });
+});
 
 // GET route => to get a specific project/detailed view
 router.get("/athlete/:id", (req, res, next) => {
@@ -79,23 +81,6 @@ router.get("/athlete/:id", (req, res, next) => {
       console.log(err);
     });
 });
-
-// // PUT route => to update a specific project
-// router.put('/projects/:id', (req, res, next)=>{
-
-//     if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
-//       res.status(400).json({ message: 'Specified id is not valid' });
-//       return;
-//     }
-
-//     Project.findByIdAndUpdate(req.params.id, req.body)
-//       .then(() => {
-//         res.json({message: `Project with ${req.params.id} is updated successfully.`});
-//       })
-//       .catch(err => {
-//         res.json(err);
-//       })
-//   })
 
 //   // DELETE route => to delete a specific project
 //   router.delete('/projects/:id', (req, res, next)=>{
