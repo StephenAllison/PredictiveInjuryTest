@@ -5,6 +5,7 @@ const userSchema = new Schema({
   sport: String,
   league: String,
   team: String,
+  staffType: String,
   role: String,
   name: String,
   username: String,

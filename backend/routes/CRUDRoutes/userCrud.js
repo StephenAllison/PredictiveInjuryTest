@@ -45,6 +45,8 @@ router.put("/userProfile/:id", (req, res, next) => {
     return;
   }
 
+  console.log(req.body);
+
   userProfile
     .findByIdAndUpdate(req.params.id, req.body)
     .then(() => {

@@ -48,6 +48,7 @@ authRoutes.post("/signup", (req, res, next) => {
       sport: sport,
       league: league,
       team: team,
+      staffType: staffType,
       role: role,
       name: name,
       username: username,
