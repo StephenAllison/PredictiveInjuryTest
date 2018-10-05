@@ -4,33 +4,34 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const athleteMediators = require("../../models/Athlete-Models/athleteMediators");
 
-// // GET route => to get all the projects
-// router.get('/projects', (req, res, next) => {
-//   Project.find().populate('tasks')
-//     .then(allTheProjects => {
-//       res.json(allTheProjects);
+// GET route => to get all the Mediators
+router.get("/athleteMediators", (req, res, next) => {
+  athleteMediators
+    .find()
+    .populate("athleteMediators")
+    .then(athleteMediators => {
+      res.json(athleteMediators);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
+// // POST route => to create a new project
+// router.post("/projects", (req, res, next) => {
+//   Project.create({
+//     title: req.body.title,
+//     description: req.body.description,
+//     owner: req.user._id,
+//     tasks: []
+//   })
+//     .then(response => {
+//       res.json(response);
 //     })
 //     .catch(err => {
 //       res.json(err);
-//     })
+//     });
 // });
-
-// // POST route => to create a new project
-// router.post('/projects', (req, res, next)=>{
-
-//     Project.create({
-//       title: req.body.title,
-//       description: req.body.description,
-//       owner: req.user._id,
-//       tasks: []
-//     })
-//       .then(response => {
-//         res.json(response);
-//       })
-//       .catch(err => {
-//         res.json(err);
-//       })
-//   });
 
 //   // GET route => to get a specific project/detailed view
 // router.get('/projects/:id', (req, res, next)=>{
@@ -88,4 +89,4 @@ const athleteMediators = require("../../models/Athlete-Models/athleteMediators")
 //       })
 //   })
 
-// module.exports = router;
+module.exports = router;

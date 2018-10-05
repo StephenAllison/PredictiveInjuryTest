@@ -49,9 +49,7 @@ router.put("/userProfile/:id", (req, res, next) => {
     .findByIdAndUpdate(req.params.id, req.body)
     .then(() => {
       res.json({
-        message: `Profile ${
-          req.params.id
-        } has been successfully updated successfully.`
+        message: `Profile ${req.params.id} has been updated successfully.`
       });
     })
     .catch(err => {
