@@ -2,7 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
-const athleteProfile = require("../../models/Athlete-Models/athleteProfile");
+const athleteProfile = require("../../models/athleteProfile");
 
 // GET route => to Get Full Athlete Profile
 router.get("/athleteProfile", (req, res, next) => {
@@ -19,14 +19,22 @@ router.get("/athleteProfile", (req, res, next) => {
 });
 
 // POST route => to create a new Athlete Profile
-router.post("/newAthlete", (req, res, next) => {
+router.post("/createNewAthlete", (req, res, next) => {
   athleteProfile
     .create({
       sport: req.body.sport,
       league: req.body.league,
       team: req.body.team,
       name: req.body.name,
-      position: req.body.position
+      position: req.body.position,
+      physicalMediatingFactorScore: req.body.physicalMediatingFactorScore,
+      psychologicalMediatingFactorScore:
+        req.body.psychologicalMediatingFactorScore,
+      socialMediatingFactorScore: req.body.socialMediatingFactorScore,
+      physicalModeratingFactorScore: req.body.physicalModeratingFactorScore,
+      psychologicalModeratingFactorScore:
+        req.body.psychologicalModeratingFactorScore,
+      socialModeratingFactorScore: req.body.socialModeratingFactorScore
     })
     .then(response => {
       res.json(response);
@@ -35,7 +43,7 @@ router.post("/newAthlete", (req, res, next) => {
       res.json(err);
     });
 });
-
+//GET route => Find Athlete By ID
 router.get("/athlete/:id", (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: "Specified id is not valid" });
@@ -53,50 +61,41 @@ router.get("/athlete/:id", (req, res, next) => {
       console.log(err);
     });
 });
-
-// GET route => to get a specific project/detailed view
-router.get("/athlete/:id", (req, res, next) => {
+//PUT route => Update Athlete
+router.put("/updateAthleteProfile/:id", (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: "Specified id is not valid" });
     return;
   }
 
-  // our projects have array of tasks' ids and
-  // we can use .populate() method to get the whole task objects
-  //                                   ^
-  //                                   |
-  //                                   |
   athleteProfile
-    .findById(req.params.id)
-    // .populate("moderators")
-    // .populate("mediators")
-    .then(response => {
-      //   console.log(req.params.id);
-      res.json(response);
-      console.log(response);
-      //   res.json(response);
+    .findByIdAndUpdate(req.params.id, req.body)
+    .then(() => {
+      res.json({
+        message: `Profile ${req.params.id} has been updated successfully.`
+      });
     })
     .catch(err => {
       res.json(err);
-      console.log(err);
     });
 });
+//Delete route => Delete Athlete
+router.delete("/deleteAthlete/:id", (req, res, next) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ message: "Specified id is not valid" });
+    return;
+  }
 
-//   // DELETE route => to delete a specific project
-//   router.delete('/projects/:id', (req, res, next)=>{
-
-//     if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
-//       res.status(400).json({ message: 'Specified id is not valid' });
-//       return;
-//     }
-
-//     Project.findByIdAndRemove(req.params.id)
-//       .then(() => {
-//         res.json({message: `Project with ${req.params.id} is removed successfully.`});
-//       })
-//       .catch( err => {
-//         res.json(err);
-//       })
-//   })
+  athleteProfile
+    .findByIdAndRemove(req.params.id)
+    .then(() => {
+      res.json({
+        message: `Athlete with ${req.params.id} has been successfully removed.`
+      });
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
 
 module.exports = router;

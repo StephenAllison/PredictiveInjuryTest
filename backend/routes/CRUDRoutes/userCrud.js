@@ -16,7 +16,7 @@ router.get("/userProfile", (req, res, next) => {
     });
 });
 
-// GET route => to get a specific project/detailed view
+// GET route => Find a Specific User by Id
 router.get("/userProfile/:id", (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: "Specified id is not valid" });
@@ -38,7 +38,7 @@ router.get("/userProfile/:id", (req, res, next) => {
     });
 });
 
-// PUT route => to update a specific project
+// PUT route => Update User Profile
 router.put("/userProfile/:id", (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: "Specified id is not valid" });
@@ -57,21 +57,22 @@ router.put("/userProfile/:id", (req, res, next) => {
     });
 });
 
-//   // DELETE route => to delete a specific project
-//   router.delete('/projects/:id', (req, res, next)=>{
+// DELETE route => to delete a specific User
+router.delete("/user/:id", (req, res, next) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ message: "Specified id is not valid" });
+    return;
+  }
 
-//     if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
-//       res.status(400).json({ message: 'Specified id is not valid' });
-//       return;
-//     }
-
-//     Project.findByIdAndRemove(req.params.id)
-//       .then(() => {
-//         res.json({message: `Project with ${req.params.id} is removed successfully.`});
-//       })
-//       .catch( err => {
-//         res.json(err);
-//       })
-//   })
+  Project.findByIdAndRemove(req.params.id)
+    .then(() => {
+      res.json({
+        message: `Athlete with ${req.params.id} has been successfully removed.`
+      });
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
 
 module.exports = router;

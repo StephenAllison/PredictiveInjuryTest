@@ -6,9 +6,13 @@ const athleteProfileSchema = new Schema({
   league: String,
   team: String,
   name: String,
-  position: String
-  // moderators: { type: Schema.Types.ObjectId, ref: "AthleteModerator" }
-  // mediators: { type: Schema.Types.ObjectId, ref: "AthleteMediator" }
+  position: String,
+  physicalMediatingFactorScore: Number,
+  socialMediatingFactorScore: Number,
+  socialMediatingFactorScore: Number,
+  physicalModeratingFactorScore: Number,
+  socialModeratingFactorScore: Number,
+  socialModeratingFactorScore: Number
 });
 
 const AthleteProfile = mongoose.model("AthleteProfile", athleteProfileSchema);
