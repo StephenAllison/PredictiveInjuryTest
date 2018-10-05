@@ -21,16 +21,18 @@ router.get("/athleteModerators", (req, res, next) => {
 router.post("/newAthleteModerators", (req, res, next) => {
   athleteModerators
     .create({
-      //Physical Factors
-      biomechanicsTechnique: req.body.biomechanicsTechnique,
-      physicalConditioning: req.body.physicalConditioning,
-      //Psychological Factors
-      hardinessResilience: req.body.hardinessResilience,
-      athleticCopingSkills: req.body.athleticCopingSkills,
-      concentrationFocus: req.body.concentrationFocus,
-      //Social
-      organizationalSupport: req.body.organizationalSupport,
-      socialSupport: req.body.socialSupport
+      physicalModeratingFactorScore: req.body.physicalModeratingFactorScore,
+      //   biomechanicsTechnique: req.body.biomechanicsTechnique,
+      //   physicalConditioning: req.body.physicalConditioning,
+      psychologicalModeratingFactorScore:
+        req.body.psychologicalModeratingFactorScore,
+      //   hardinessResilience: req.body.hardinessResilience,
+      //   athleticCopingSkills: req.body.athleticCopingSkills,
+      //   concentrationFocus: req.body.concentrationFocus,
+      socialModeratingFactorScore: req.body.socialModeratingFactorScore
+      //   organizationalSupport: req.body.organizationalSupport,
+      //   socialSupport: req.body.socialSupport
+
       // owner: req.athlete._id,
       // athleteMediator: []
     })

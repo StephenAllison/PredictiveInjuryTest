@@ -21,16 +21,19 @@ router.get("/athleteMediators", (req, res, next) => {
 router.post("/newAthleteMediators", (req, res, next) => {
   athleteMediators
     .create({
-      //Physical Factors
-      previousInjuryHistory: req.body.previousInjuryHistory,
-      fatigue: req.body.fatigue,
+      physicalMediatingFactorScore: req.body.physicalMediatingFactorScore,
+      //   previousInjuryHistory: req.body.previousInjuryHistory,
+      //   fatigue: req.body.fatigue,
       //Psychological Factors
-      angerAggression: req.body.angerAggression,
-      impulsiveness: req.body.impulsiveness,
-      burnout: req.body.burnout,
-      //Social
-      organizationalPressure: req.body.organizationalPressure,
-      socialPressure: req.body.socialPressure
+      psychologicalMediatingFactorScore:
+        req.body.psychologicalMediatingFactorScore,
+      //   angerAggression: req.body.angerAggression,
+      //   impulsiveness: req.body.impulsiveness,
+      //   burnout: req.body.burnout,
+      socialMediatingFactorScore: req.body.socialMediatingFactorScore
+      //   organizationalPressure: req.body.organizationalPressure,
+      //   socialPressure: req.body.socialPressure
+
       // owner: req.athlete._id,
       // athleteMediator: []
     })
