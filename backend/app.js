@@ -13,7 +13,6 @@ const LocalStrategy = require("passport-local").Strategy;
 const flash = require("flash");
 const bcrypt = require("bcryptjs");
 const user = require("./models/user");
-
 const session = require("express-session");
 const passport = require("passport");
 
@@ -131,8 +130,5 @@ app.use("/api", athleteProfileCrud);
 
 const userCrud = require("./routes/CRUDRoutes/userCrud");
 app.use("/api", userCrud);
-
-const medStaffProfileCRUD = require("./routes/CRUDRoutes/medStaffProfileCRUD");
-app.use("/api", medStaffProfileCRUD);
 
 module.exports = app;

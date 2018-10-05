@@ -20,6 +20,10 @@ router.get("/athleteProfile", (req, res, next) => {
 
 // POST route => to create a new Athlete Profile
 router.post("/createNewAthlete", (req, res, next) => {
+  // if (req.user.role === "medstaff") {
+  //   return res.redirect("/");
+  // }
+
   athleteProfile
     .create({
       sport: req.body.sport,
