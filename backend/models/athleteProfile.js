@@ -8,10 +8,10 @@ const athleteProfileSchema = new Schema({
   name: String,
   position: String,
   physicalMediatingFactorScore: Number,
-  socialMediatingFactorScore: Number,
+  psychologicalMediatingFactorScore: Number,
   socialMediatingFactorScore: Number,
   physicalModeratingFactorScore: Number,
-  socialModeratingFactorScore: Number,
+  psychologicalModeratingFactorScore: Number,
   socialModeratingFactorScore: Number
 });
 

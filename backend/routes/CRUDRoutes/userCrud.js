@@ -67,7 +67,7 @@ router.delete("/user/:id", (req, res, next) => {
   Project.findByIdAndRemove(req.params.id)
     .then(() => {
       res.json({
-        message: `Athlete with ${req.params.id} has been successfully removed.`
+        message: `User with ${req.params.id} has been successfully removed.`
       });
     })
     .catch(err => {
