@@ -17,21 +17,30 @@ router.get("/athleteMediators", (req, res, next) => {
     });
 });
 
-// // POST route => to create a new project
-// router.post("/projects", (req, res, next) => {
-//   Project.create({
-//     title: req.body.title,
-//     description: req.body.description,
-//     owner: req.user._id,
-//     tasks: []
-//   })
-//     .then(response => {
-//       res.json(response);
-//     })
-//     .catch(err => {
-//       res.json(err);
-//     });
-// });
+// POST route => to create New Mediating Factors for an Athlete
+router.post("/newAthleteMediators", (req, res, next) => {
+  athleteMediators
+    .create({
+      //Physical Factors
+      previousInjuryHistory: req.body.previousInjuryHistory,
+      fatigue: req.body.fatigue,
+      //Psychological Factors
+      angerAggression: req.body.angerAggression,
+      impulsiveness: req.body.impulsiveness,
+      burnout: req.body.burnout,
+      //Social
+      organizationalPressure: req.body.organizationalPressure,
+      socialPressure: req.body.socialPressure
+      // owner: req.athlete._id,
+      // athleteMediator: []
+    })
+    .then(response => {
+      res.json(response);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
 
 //   // GET route => to get a specific project/detailed view
 // router.get('/projects/:id', (req, res, next)=>{
