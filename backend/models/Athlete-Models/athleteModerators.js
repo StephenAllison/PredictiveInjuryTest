@@ -1,18 +1,18 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-//Athlete Model
+//Athlete Moderating Factors Model
 const athleteModeratorSchema = new Schema({
-  //Physical
-  biomechanicsTechnique: Number,
-  fatigue: Number,
-  //Psychological
-  hardinessResilience: Number,
-  athleticCopingSkills: Number,
-  concentrationFocus: Number,
-  //Social
-  organizationalSupport: Number,
-  socialPressure: Number
+  physicalModeratingFactorScore: Number,
+  // biomechanicsTechnique: Number,
+  // fatigue: Number,
+  psychologicalModeratingFactorScore: Number,
+  // hardinessResilience: Number,
+  // athleticCopingSkills: Number,
+  // concentrationFocus: Number,
+  socialModeratingFactorScore: Number
+  // organizationalPressure: Number,
+  // socialPressure: Number
 });
 
 const AthleteModerator = mongoose.model(
