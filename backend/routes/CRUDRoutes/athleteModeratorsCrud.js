@@ -4,16 +4,18 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const athleteModerators = require("../../models/Athlete-Models/athleteModerators");
 
-// // GET route => to get all the projects
-// router.get('/projects', (req, res, next) => {
-//   Project.find().populate('tasks')
-//     .then(allTheProjects => {
-//       res.json(allTheProjects);
-//     })
-//     .catch(err => {
-//       res.json(err);
-//     })
-// });
+// GET route => to get all the Mediators
+router.get("/athleteModerators", (req, res, next) => {
+  athleteModerators
+    .find()
+    .populate("athleteModerators")
+    .then(athleteModerators => {
+      res.json(athleteModerators);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
 
 // // POST route => to create a new project
 // router.post('/projects', (req, res, next)=>{
