@@ -4,7 +4,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const athleteModerators = require("../../models/Athlete-Models/athleteModerators");
 
-// GET route => to get all the Mediators
+// GET route => to get all the Moderators
 router.get("/athleteModerators", (req, res, next) => {
   athleteModerators
     .find()
@@ -17,22 +17,30 @@ router.get("/athleteModerators", (req, res, next) => {
     });
 });
 
-// // POST route => to create a new project
-// router.post('/projects', (req, res, next)=>{
-
-//     Project.create({
-//       title: req.body.title,
-//       description: req.body.description,
-//       owner: req.user._id,
-//       tasks: []
-//     })
-//       .then(response => {
-//         res.json(response);
-//       })
-//       .catch(err => {
-//         res.json(err);
-//       })
-//   });
+// POST route => to create New Moderating Factors for an Athlete
+router.post("/newAthleteModerators", (req, res, next) => {
+  athleteModerators
+    .create({
+      //Physical Factors
+      biomechanicsTechnique: req.body.biomechanicsTechnique,
+      physicalConditioning: req.body.physicalConditioning,
+      //Psychological Factors
+      hardinessResilience: req.body.hardinessResilience,
+      athleticCopingSkills: req.body.athleticCopingSkills,
+      concentrationFocus: req.body.concentrationFocus,
+      //Social
+      organizationalSupport: req.body.organizationalSupport,
+      socialSupport: req.body.socialSupport
+      // owner: req.athlete._id,
+      // athleteMediator: []
+    })
+    .then(response => {
+      res.json(response);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
 
 //   // GET route => to get a specific project/detailed view
 // router.get('/projects/:id', (req, res, next)=>{
