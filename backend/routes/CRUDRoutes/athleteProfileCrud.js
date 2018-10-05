@@ -30,6 +30,7 @@ router.post("/createNewAthlete", (req, res, next) => {
       league: req.body.league,
       team: req.body.team,
       name: req.body.name,
+      birthDate: req.body.birthDate,
       position: req.body.position,
       physicalMediatingFactorScore: req.body.physicalMediatingFactorScore,
       psychologicalMediatingFactorScore:
